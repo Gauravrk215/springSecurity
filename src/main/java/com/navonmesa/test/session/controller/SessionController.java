@@ -1,4 +1,4 @@
-package com.navonmesa.test.session.controller;
+package com.realnet.session.controller;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,23 +42,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import com.navonmesa.test.Response.OperationResponse;
-import com.navonmesa.test.Response.OperationResponse.ResponseStatusEnum;
-import com.navonmesa.test.session.Repository.TokenRepository;
-import com.navonmesa.test.session.Service.TokenBlacklistService;
-import com.navonmesa.test.session.entity.AboutWork;
-import com.navonmesa.test.session.entity.SessionItem;
-import com.navonmesa.test.session.entity.Token;
-import com.navonmesa.test.session.response.SessionResponse;
 import com.realnet.config.EmailService;
 import com.realnet.config.TokenProvider;
 import com.realnet.fnd.response.EntityResponse;
+import com.realnet.fnd.response.OperationResponse;
+import com.realnet.fnd.response.OperationResponse.ResponseStatusEnum;
 import com.realnet.logging1.entity.AppUserLog;
 import com.realnet.logging1.service.LoggingService;
+import com.realnet.session.Repository.TokenRepository;
+import com.realnet.session.Service.TokenBlacklistService;
+import com.realnet.session.entity.AboutWork;
+import com.realnet.session.entity.SessionItem;
+import com.realnet.session.entity.Token;
+import com.realnet.session.response.SessionResponse;
 import com.realnet.users.entity.LoginUser;
+import com.realnet.users.entity.Role;
 import com.realnet.users.entity.Sys_Accounts;
 import com.realnet.users.entity1.AppUser;
 import com.realnet.users.entity1.AppUserSessions;
+import com.realnet.users.entity1.Registration;
 import com.realnet.users.response.MessageResponse;
 import com.realnet.users.service.AboutWorkService;
 import com.realnet.users.service1.AppUserServiceImpl;
@@ -66,8 +71,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import springfox.documentation.annotations.ApiIgnore;
 
 /*
@@ -123,7 +126,7 @@ public class SessionController {
 		AppUser user = userService.findUserByEmail(loginRequest.getEmail());
 
 		Boolean active = user.isActive();
-		if (!active) {
+		if (active == null || !active) {
 			SessionResponse resp = new SessionResponse();
 			resp.setOperationStatus(ResponseStatusEnum.ERROR);
 			resp.setOperationMessage("Inactive User");
@@ -133,7 +136,7 @@ public class SessionController {
 		Long account_id = user.getAccount().getAccount_id();
 		Sys_Accounts account = sysAccountService.getBYId(account_id);
 		Boolean activeAcc = account.getActive();
-		if (!activeAcc) {
+		if (activeAcc == null || !activeAcc) {
 			SessionResponse resp = new SessionResponse();
 			resp.setOperationStatus(ResponseStatusEnum.ERROR);
 			resp.setOperationMessage("Inactive Account");
