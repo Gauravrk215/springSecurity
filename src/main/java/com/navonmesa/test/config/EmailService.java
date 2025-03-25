@@ -82,7 +82,16 @@ public class EmailService {
 		email.setSubject(subject);
 		email.setText(body);
 		email.setTo(sendTo);
-		mailSender.send(email);
+		try {
+
+			mailSender.send(email);
+			System.out.println(" email sent to " + sendTo);
+
+		} catch (Exception e) {
+
+			System.out.println(" invalid email " + e);
+			// TODO: handle exception
+		}
 
 	}
 
