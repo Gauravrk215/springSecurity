@@ -3,8 +3,10 @@ import com.realnet.event_management.Repository.Event_ManagementRepository;
 import com.realnet.event_management.Entity.Event_Management;import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.realnet.Notification.Services.NotificationEntityService;
 import com.realnet.SequenceGenerator.Service.SequenceService;
-import com.realnet.Notification.Entity.NotificationService;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 	import org.springframework.stereotype.Service;
