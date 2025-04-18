@@ -1,4 +1,4 @@
-package com.realnet.Notification.Entity;
+package com.realnet.Notification.Services;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,12 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.realnet.Notification.Entity.NotEntity;
 import com.realnet.Notification.Repository.NotRepo;
 import com.realnet.users.entity1.AppUser;
 import com.realnet.users.service1.AppUserServiceImpl;
 
 @Service
-public class NotificationService {
+public class NotificationEntityService {
 
 	@Autowired
 	private NotRepo notRepo;

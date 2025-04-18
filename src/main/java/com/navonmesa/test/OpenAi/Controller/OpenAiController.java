@@ -20,7 +20,7 @@ public class OpenAiController {
 	public String chat(@RequestBody openAi request) {
 		String prompt = request.getPrompt();
 
-		System.out.println("apen api start..");
+		System.out.println("open api start..");
 		return openAiServices.getChatGPTResponse(prompt);
 	}
 
