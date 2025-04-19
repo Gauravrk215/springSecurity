@@ -3,7 +3,6 @@ package com.realnet.Payment.Paytm;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
