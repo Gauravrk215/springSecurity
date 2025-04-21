@@ -1,7 +1,7 @@
-package com.navonmesa.test.session.response;
+package com.realnet.session.response;
 
-import com.navonmesa.test.Response.OperationResponse;
-import com.navonmesa.test.session.entity.SessionItem;
+import com.realnet.fnd.response.OperationResponse;
+import com.realnet.session.entity.SessionItem;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

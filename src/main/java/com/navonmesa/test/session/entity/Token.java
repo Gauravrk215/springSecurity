@@ -1,12 +1,10 @@
-package com.navonmesa.test.session.entity;
+package com.realnet.session.entity;
+
+import javax.persistence.*;
+
+import lombok.Data;
 
 import java.time.LocalDateTime;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
 
 @Entity
 @Data

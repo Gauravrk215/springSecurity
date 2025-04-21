@@ -1,4 +1,4 @@
-package com.navonmesa.test.session.entity;
+package com.realnet.session.entity;
 
 import lombok.Data;
 

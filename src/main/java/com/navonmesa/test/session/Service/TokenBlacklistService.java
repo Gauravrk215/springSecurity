@@ -1,4 +1,4 @@
-package com.navonmesa.test.session.Service;
+package com.realnet.session.Service;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,8 +9,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.navonmesa.test.session.Repository.TokenRepository;
-import com.navonmesa.test.session.entity.Token;
+import com.realnet.session.Repository.TokenRepository;
+import com.realnet.session.entity.Token;
 
 @Service
 public class TokenBlacklistService {
