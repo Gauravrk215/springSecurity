@@ -21,6 +21,7 @@ import lombok.Data;
 public class Who_column implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "CREATED_AT", nullable = false, updatable = false)
 	@CreatedDate

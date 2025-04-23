@@ -1,5 +1,7 @@
 package com.realnet.users.service1;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -316,8 +318,14 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 	public AppUser getLoggedInUser() {
 		String loggedInUserName = this.getLoggedInUserEmail();
 		Optional<AppUser> user = appUserRepository.findByUsername(loggedInUserName);
+
+		if (user.isPresent()) {
+			return user.get();
+
+		} else {
+			return null;
+		}
 //		log.info("getLoggedInUser() : {} ", user.get());
-		return user.get();
 	}
 
 	@Override
